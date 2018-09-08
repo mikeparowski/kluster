@@ -1,0 +1,11 @@
+Total articles classified: 9924
+n_components = 500, kfolds=8
+Score: [ 0.87232413  0.87681193]
+Confusion matrix:
+ [[4429  548]
+ [ 696 4251]]Total articles classified: 9924
+n_components = 300, kfolds=8
+Score: [ 0.86974424  0.87459346]
+Confusion matrix:
+ [[4423  554]
+ [ 714 4233]]

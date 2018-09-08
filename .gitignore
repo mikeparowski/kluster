@@ -1,0 +1,5 @@
+/models/*
+/research/*
+/data/articles/*
+*.pyc
+*DS_Store
