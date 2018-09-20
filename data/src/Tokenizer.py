@@ -4,23 +4,27 @@ import json, os, codecs, sys, string, re
 
 
 class Tokenizer():
-    def __init__(self, directory, source):
-        self.directory = directory
+    def __init__(self, source=None, directory=None):
         self.source = source
+        self.directory = directory
         self.stopwords = stopwords.words('english')
         self.tokenizer = RegexpTokenizer("[\w']+", flags=re.UNICODE)
+        self.translator = str.maketrans('', '', string.punctuation)
 
     def extract_clean(self):
-        print "extracting {}".format(self.source)
+        if not self.directory:
+            print("ERROR: directory must be given for extract_clean. Use clean() for plaintext")
+            sys.exit(1)
+        print("extracting {}".format(self.source))
         filelist = os.listdir(self.directory)
         for filename in filelist:
-            print filelist.index(filename)
+            print(filelist.index(filename))
             with codecs.open(os.path.join(self.directory, filename), 'r', 'utf-8') as f:
                 try:
                     data = f.read()
                     #data = json.load(f)
                 except ValueError as e:
-                    print "{} gave error: {}".format(filename, e)
+                    print("{} gave error: {}".format(filename, e))
                     sys.exit(1)
             article = data#['article']
             article = self.clean(article)
@@ -29,12 +33,11 @@ class Tokenizer():
 
     def clean(self, text):
         text = re.sub(r"[^\x00-\x7F]+", " ", text)
-        text = text.encode('ascii')
         # remove punctuation
-        text = text.translate(None, string.punctuation)
+        text = text.translate(self.translator)
         text = re.sub(r"US", "american", text)
         text = text.lower().split()
-        tokens = [token for token in text if token.decode('utf-8') not in self.stopwords and len(token) >= 3]
+        tokens = [token for token in text if token not in self.stopwords and len(token) >= 3]
         text = " ".join(tokens)
 
         # regex cleaning

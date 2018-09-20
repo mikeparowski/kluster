@@ -1,0 +1,10 @@
+Fox:     1105
+Breitbart:     6293
+ThinkProgress:     5152
+CNN:     1388
+TheAtlantic:      326
+Vice:      250
+TheBlaze:      176
+TheFederalist:      547
+WSJ:      775
+NYTimes:      315

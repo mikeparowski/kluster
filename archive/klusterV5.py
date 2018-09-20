@@ -3,6 +3,7 @@ import os, random, numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import confusion_matrix, f1_score
 from sklearn.pipeline import Pipeline, FeatureUnion
+from sklearn.manifold import LocallyLinearEmbedding
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import TruncatedSVD
 from sklearn.model_selection import KFold
@@ -15,7 +16,15 @@ DEM = "democrat"
 
 SOURCES = [
     ('data/breitbart', REP),
-    ('data/thinkprogress', DEM)
+    ('data/thinkprogress', DEM),
+    ('data/cnn', DEM),
+    ('data/foxnews', REP),
+    ('data/nytimes', DEM),
+    ('data/theatlantic', DEM),
+    ('data/theblaze', REP),
+    ('data/thefederalist', REP),
+    ('data/vice', DEM),
+    ('data/wsj', REP)
 ]
 
 class Classifier:
