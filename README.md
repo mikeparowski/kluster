@@ -1,1 +1,2 @@
-statistically detecting relative bias in common news sources
+experimenting with various NLP/ML techniques to detect political slant in news articles
+
